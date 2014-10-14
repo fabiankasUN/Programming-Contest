@@ -1,0 +1,115 @@
+package codeforces;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
+public class CC {
+
+	public static int[] readInts(String cad) {
+		String read[] = cad.split(" ");
+		int res[] = new int[read.length];
+		for (int i = 0; i < read.length; i++) {
+			res[i] = Integer.parseInt(read[i]);
+		}
+		return res;
+	}
+
+	public static long[] readLongs(String cad) {
+		String read[] = cad.split(" ");
+		long res[] = new long[read.length];
+		for (int i = 0; i < read.length; i++) {
+			res[i] = Long.parseLong(read[i]);
+		}
+		return res;
+	}
+
+	static void printArrayInt(int[] array) {
+		if (array == null || array.length == 0)
+			return;
+		for (int i = 0; i < array.length; i++) {
+			if (i > 0)
+				System.out.print(" ");
+			System.out.print(array[i]);
+		}
+		System.out.println();
+	}
+
+	static void printMatrixInt(int[][] array) {
+		if (array == null || array.length == 0)
+			return;
+		for (int i = 0; i < array.length; i++) {
+			for (int j = 0; j < array[0].length; j++) {
+				if (j > 0)
+					System.out.print(" ");
+				System.out.print(array[i][j]);
+			}
+			System.out.println();
+		}
+
+	}
+
+	public static int max(int arr[]) {
+		int max = arr[0];
+		for (int i = 1; i < arr.length; i++) {
+			max = Math.max(max, arr[i]);
+		}
+		return max;
+	}
+
+	public static int min(int arr[]) {
+		int min = arr[0];
+		for (int i = 1; i < arr.length; i++) {
+			min = Math.min(min, arr[i]);
+		}
+		return min;
+	}
+
+	public static int nextInt() throws IOException {
+		return Integer.parseInt(in.readLine());
+	}
+
+	public static double nextDouble() throws IOException {
+		return Double.parseDouble(in.readLine());
+	}
+
+	public static String nextLine() throws IOException {
+		return in.readLine();
+	}
+
+	public static BufferedReader in;
+
+	public static void main(String[] args) throws IOException {
+
+		File f = new File("entrada");
+		if (f.exists()) {
+			in = new BufferedReader(new FileReader(f));
+		} else
+			in = new BufferedReader(new InputStreamReader(System.in));
+
+		long n = nextInt();
+		ArrayList<Long> lista = new ArrayList<Long>();
+		ArrayList<Long> lista2 = new ArrayList<Long>();
+		long k = 7;
+		long r = 5;
+		long dif = 8;
+		long p = 3;
+		while (k <= n) {
+			lista.add(k);
+			lista2.add(r);
+			k += dif;
+			r += dif;
+			dif += p;
+		}
+		lista.add(k);
+		lista2.add(r);
+		long w = n - lista.get(lista.size() - 2);
+		if (w == 1 || w == 3) {
+			System.out.println(lista.size() - 2);
+		} else
+			System.out.println(lista.size() - 1);
+
+	}
+}
