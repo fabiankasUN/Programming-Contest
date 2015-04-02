@@ -1,17 +1,17 @@
-package codeforces;
+package Uri;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class PresentfromLena {
-
-	public static int[] readInts(String cad) {
+public class PopulationIncrease {
+	public static double[] readInts(String cad) {
 		String read[] = cad.split(" ");
-		int res[] = new int[read.length];
+		double res[] = new double[read.length];
 		for (int i = 0; i < read.length; i++) {
-			res[i] = Integer.parseInt(read[i]);
+			res[i] = Double.parseDouble(read[i]);
 		}
 		return res;
 	}
@@ -77,9 +77,29 @@ public class PresentfromLena {
 
 		int n = Integer.parseInt(in.readLine());
 		for (int i = 0; i < n; i++) {
-			
+			double d[] = readInts(in.readLine());
+			double x = d[2];
+			double y = d[3];
+			long a = (int)d[0];
+			long b = (int)d[1];
+			int an = 0;
+
+			boolean flag = false;
+			while (a <= b) {
+				if (an > 100) {
+					flag = true;
+					break;
+				}
+				a *= (x / 100) + 1;
+				b *= (y / 100) + 1;
+				an++;
+			}
+			if (flag || an> 100) {
+				System.out.println("Mais de 1 seculo.");
+			} else {
+					System.out.println(an + " anos.");
+			}
 		}
 
 	}
 }
-

@@ -1,11 +1,13 @@
 package codeforces;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Locale;
 
-public class PresentfromLena {
+public class Bebidas {
 
 	public static int[] readInts(String cad) {
 		String read[] = cad.split(" ");
@@ -76,10 +78,12 @@ public class PresentfromLena {
 			in = new BufferedReader(new InputStreamReader(System.in));
 
 		int n = Integer.parseInt(in.readLine());
-		for (int i = 0; i < n; i++) {
-			
+		int arr[] = readInts(in.readLine());
+		float r = 0;
+		for (int i = 0; i < arr.length; i++) {
+			r+=arr[i];
 		}
-
+		r/=arr.length;
+		System.out.println(String.format(Locale.UK, "%.9f",r));
 	}
 }
-

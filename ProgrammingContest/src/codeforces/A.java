@@ -1,9 +1,12 @@
 package codeforces;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashSet;
+import java.util.HashSet;
 
 public class A {
 
@@ -84,48 +87,17 @@ public class A {
 		} else
 			in = new BufferedReader(new InputStreamReader(System.in));
 
-		int d[] = readInts(in.readLine());
-		int n = d[0];
-		int m = d[1];
+		char cad[] = in.readLine().toCharArray();
+		HashSet<Character> list = new HashSet<Character>();
+		for (int i = 0; i < cad.length; i++) {
+			list.add(cad[i]);
 
-		if (n < m)
-			System.out.println(-1);
+		}
+
+		if (list.size() % 2 == 0)
+			System.out.println("CHAT WITH HER!");
 		else {
-
-			if (n % 2 == 0) {
-				int k = n / 2;
-				int cont = n / 2;
-				boolean cond = false;
-				while (cond == false && k>=0) {
-					if (cont % m == 0) {
-						cond = true;
-						break;
-					}
-					k --;
-					cont++;
-				}
-				if (cond)
-					System.out.println(cont);
-				else
-					System.out.println("-1");
-
-			} else {
-				int k = n / 2;
-				int cont = (n / 2) + 1;
-				boolean cond = false;
-				while (cond == false && k >=0) {
-					if (cont % m == 0) {
-						cond = true;
-						break;
-					}
-					k --;
-					cont++;
-				}
-				if (cond)
-					System.out.println(cont);
-				else
-					System.out.println("-1");
-			}
+			System.out.println("IGNORE HIM!");
 		}
 	}
 

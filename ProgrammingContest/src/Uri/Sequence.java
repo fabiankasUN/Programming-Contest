@@ -1,11 +1,13 @@
-package codeforces;
+package Uri;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Locale;
 
-public class PresentfromLena {
+public class Sequence {
 
 	public static int[] readInts(String cad) {
 		String read[] = cad.split(" ");
@@ -67,19 +69,15 @@ public class PresentfromLena {
 	}
 
 	public static void main(String[] args) throws IOException {
-		BufferedReader in;
-		StringBuilder out = new StringBuilder();
-		File f = new File("entrada");
-		if (f.exists()) {
-			in = new BufferedReader(new FileReader(f));
-		} else
-			in = new BufferedReader(new InputStreamReader(System.in));
-
-		int n = Integer.parseInt(in.readLine());
-		for (int i = 0; i < n; i++) {
-			
+		int a = 3;
+		int b = 2;
+		double res = 1;
+		while (a <= 39) {
+			res += (a * 1.0) / b;
+			a += 2;
+			b *= 2;
 		}
+		System.out.println(String.format(Locale.US, "%.2f",res));
 
 	}
 }
-

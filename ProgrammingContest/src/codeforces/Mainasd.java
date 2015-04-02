@@ -1,11 +1,12 @@
 package codeforces;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class PresentfromLena {
+public class Mainasd {
 
 	public static int[] readInts(String cad) {
 		String read[] = cad.split(" ");
@@ -77,9 +78,11 @@ public class PresentfromLena {
 
 		int n = Integer.parseInt(in.readLine());
 		for (int i = 0; i < n; i++) {
-			
+			int k = Integer.parseInt(in.readLine());
+			long w = (long)k * (long)(k + 1);
+			long r = (long)w / 2;
+			System.out.println("Case "+ (i+1)+": " + r);
 		}
 
 	}
 }
-

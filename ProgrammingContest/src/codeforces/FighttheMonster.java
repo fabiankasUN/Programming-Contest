@@ -1,11 +1,12 @@
 package codeforces;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class PresentfromLena {
+public class FighttheMonster {
 
 	public static int[] readInts(String cad) {
 		String read[] = cad.split(" ");
@@ -75,11 +76,53 @@ public class PresentfromLena {
 		} else
 			in = new BufferedReader(new InputStreamReader(System.in));
 
-		int n = Integer.parseInt(in.readLine());
-		for (int i = 0; i < n; i++) {
-			
+		int HPy, ATKy, DEFy, HPm, ATKm, DEFm;
+		int priceH, priceA, priceD;
+		int d[];
+		int temp;
+		int minPrice = Integer.MAX_VALUE;
+		int hitM;
+		int hitY;
+		d = readInts(in.readLine());
+		HPy = d[0];
+		ATKy = d[1];
+		DEFy = d[2];
+
+		d = readInts(in.readLine());
+		HPm = d[0];
+		ATKm = d[1];
+		DEFm = d[2];
+
+		d = readInts(in.readLine());
+		priceH = d[0];
+		priceA = d[1];
+		priceD = d[2];
+		for (int hp = 0; hp <= 1000; hp++) {
+			for (int atk = 0; atk <= 1000; atk++) {
+				for (int def = 0; def <= 1000; def++) {
+					temp = hp * priceH + atk * priceA + def * priceD;
+					if (temp > minPrice)
+						break;
+					if (temp < minPrice) {
+						if (DEFy + def >= ATKm)
+							hitM = Integer.MAX_VALUE;
+						else
+							hitM = (int) Math.ceil((HPy + hp) * 1.0
+									/ (ATKm - (DEFy + def)));
+						if (DEFm >= ATKy + atk)
+							hitY = Integer.MAX_VALUE;
+						else
+							hitY = (int) Math.ceil(HPm * 1.0
+									/ ((ATKy + atk) - DEFm));
+
+						if (hitM > hitY) {
+							minPrice = temp;
+						}
+					}
+				}
+			}
 		}
+		System.out.println(minPrice);
 
 	}
 }
-

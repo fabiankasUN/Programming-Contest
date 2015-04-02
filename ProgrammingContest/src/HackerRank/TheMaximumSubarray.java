@@ -1,11 +1,12 @@
-package codeforces;
+package HackerRank;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class PresentfromLena {
+public class TheMaximumSubarray {
 
 	public static int[] readInts(String cad) {
 		String read[] = cad.split(" ");
@@ -77,9 +78,36 @@ public class PresentfromLena {
 
 		int n = Integer.parseInt(in.readLine());
 		for (int i = 0; i < n; i++) {
-			
+			int s = Integer.parseInt(in.readLine());
+			int arr[] = readInts(in.readLine());
+			int max = -100000;
+			int max2 = -100000;
+			int acum = max;
+			int acum2 = max;
+			for (int j = 0; j < arr.length; j++) {
+				if (arr[j] > 0) {
+					if (acum < 0)
+						acum = 0;
+					acum += arr[j];
+					max = Math.max(max, acum);
+				} else {
+					max = Math.max(max, arr[j]);
+				}
+
+				if (arr[j] < 0 && acum2 + arr[j] < 0) {
+					max2 = Math.max(max2, arr[j]);
+					acum2 = 0;
+				} else {
+					if (acum2 < 0)
+						acum2 = 0;
+					acum2 += arr[j];
+					max2 = Math.max(max2, acum2);
+
+				}
+			}
+			out.append(max2 + " " + max + "\n");
 		}
+		System.out.print(out);
 
 	}
 }
-

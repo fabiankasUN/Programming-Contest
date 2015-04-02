@@ -1,11 +1,12 @@
-package codeforces;
+package HackerRank;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class PresentfromLena {
+public class LIS {
 
 	public static int[] readInts(String cad) {
 		String read[] = cad.split(" ");
@@ -76,10 +77,24 @@ public class PresentfromLena {
 			in = new BufferedReader(new InputStreamReader(System.in));
 
 		int n = Integer.parseInt(in.readLine());
-		for (int i = 0; i < n; i++) {
-			
+		int arr[] = new int[n];
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = Integer.parseInt(in.readLine());
 		}
+		int lis[] = new int[n];
+		lis[0] = 1;
+		int max = lis[0];
+		for (int i = 1; i < lis.length; i++) {
+			lis[i] = 1;
+			for (int j = 0; j < i; j++) {
+				lis[i] = Math.max(lis[i], (arr[j] < arr[i] ? (lis[j] + 1) : 0));
+			}
+			max = Math.max(lis[i], max);
+		}
+		
+		
+		System.out.println(max);
 
 	}
-}
 
+}

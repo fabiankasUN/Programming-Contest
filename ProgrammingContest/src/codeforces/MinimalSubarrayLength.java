@@ -1,11 +1,12 @@
 package codeforces;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class PresentfromLena {
+public class MinimalSubarrayLength {
 
 	public static int[] readInts(String cad) {
 		String read[] = cad.split(" ");
@@ -76,10 +77,47 @@ public class PresentfromLena {
 			in = new BufferedReader(new InputStreamReader(System.in));
 
 		int n = Integer.parseInt(in.readLine());
-		for (int i = 0; i < n; i++) {
-			
+		String line;
+		while ((line = in.readLine()) != null) {
+
+			int d[] = readInts(line);
+			int arr[] = readInts(in.readLine());
+			long r = Integer.MIN_VALUE;
+			int num = d[1];
+			for (int i = 0; i < arr.length; i++) {
+				r = Math.max(r, arr[i]);
+			}
+			if (r > num) {
+				System.out.println(1);
+			} else {
+
+				int a = 0, b = 1;
+				long actually = arr[0];
+				int max = Integer.MAX_VALUE;
+				while (b < arr.length) {
+					while (actually < num && b < arr.length) {
+						if (actually == Integer.MIN_VALUE)
+							actually = 0;
+						actually += arr[b];
+						b++;
+					}
+
+					if (actually >= num) {
+						max = Math.min(max, (b - a));
+					}
+					while (actually - (arr[a] < 0 ? -arr[a] : arr[a]) > num
+							&& a < arr.length) {
+						actually -= arr[a];
+						a++;
+						max = Math.max(max, b - a);
+					}
+					b++;
+					a = b;
+				}
+				System.out.println(max);
+			}
+
 		}
 
 	}
 }
-
